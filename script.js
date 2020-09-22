@@ -33,6 +33,8 @@ for (let c = 0; c < brickColumnCount; c++) {
   }
 }
 
+let score = 0;
+
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ball.draw(ctx);
@@ -42,8 +44,12 @@ function draw() {
   ball.colides(paddle);
   bricks.forEach((brick) => {
     brick.draw(ctx);
-    brick.colides(ball);
+    score += brick.colides(ball);
   });
+
+  ctx.font = "16px Arial";
+  ctx.fillStyle = "#0095DD";
+  ctx.fillText("Score: " + score, 8, 20);
 }
 
 const interval = setInterval(draw, 10);

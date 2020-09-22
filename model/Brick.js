@@ -16,8 +16,11 @@ class Brick extends Block {
     if (this.visible && this.intersects(ball)) {
       this.visible = false;
       ball.colides(this); // causes the ball to bounce off
+      return true;
     }
+    return false;
   }
+
 }
 
 export default Brick;
