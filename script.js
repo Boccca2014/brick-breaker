@@ -25,4 +25,10 @@ function draw() {
   ball.colides(paddle);
 }
 
-setInterval(draw, 10);
+const interval = setInterval(draw, 10);
+
+document.addEventListener("gameover", (_e) => {
+  clearInterval(interval);
+  window.alert("Game Over!");
+});
+

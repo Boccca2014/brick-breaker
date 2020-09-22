@@ -1,5 +1,7 @@
 import Sprite from "./Sprite.js";
 
+const gameOver = new CustomEvent("gameover");
+
 class Ball extends Sprite {
   constructor(x, y, width, height, color) {
     super(x, y, width, height, color);
@@ -23,11 +25,15 @@ class Ball extends Sprite {
       this.dx *= -1; // switch direction
     }
 
-    if (this.y < 0 || this.y + this.height > canvasHeight) {
-      // bounce off the top/bottom edge
+    if (this.y < 0) {
+      // bounce off the top edge
       this.dy *= -1; // switch direction
+    } else if (this.y + this.height > canvasHeight) {
+      // dispatch Game Over signal!
+      document.dispatchEvent(gameOver);
     }
   }
+
 
   colides(paddle) {
     if (this.intersects(paddle)) {
