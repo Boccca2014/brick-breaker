@@ -22,6 +22,7 @@ function draw() {
   ball.move(canvas.width, canvas.height);
   paddle.draw(ctx);
   paddle.move(canvas.width);
+  ball.colides(paddle);
 }
 
 setInterval(draw, 10);
