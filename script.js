@@ -21,7 +21,7 @@ function draw() {
   ball.draw(ctx);
   ball.move(canvas.width, canvas.height);
   paddle.draw(ctx);
-  paddle.move();
+  paddle.move(canvas.width);
 }
 
 setInterval(draw, 10);
